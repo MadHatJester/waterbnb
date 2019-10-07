@@ -16,7 +16,6 @@ if(isset($_POST['payment-submit'])) {
     echo $noCard . " " . $dateCard . " " . $codeCard;
 
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
-    // Output: 54esmdr0qf
     $transacNo = substr(str_shuffle($permitted_chars), 0, 5);
 
     if (empty($strtDate) || empty($endDate) || empty($noGuest) || empty($firstName) || empty($lastName) || empty($noCard) || empty($dateCard) || empty($codeCard)) {
@@ -49,7 +48,7 @@ if(isset($_POST['payment-submit'])) {
                 else {
                     mysqli_stmt_bind_param($stmt, "sssiisi", $transacNo, $strtDate, $endDate, $noGuest, $noCard, $dateCard, $codeCard);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../occupant_index.php?hosting=success");
+                    header("Location: ../success.php?hosting=success&transacno=".$transacNo);
                     exit();
                 }
             }
