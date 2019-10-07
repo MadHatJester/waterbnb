@@ -3,7 +3,9 @@
 $strtDate = $_POST['startDate'];
 $endDate = $_POST['endDate'];
 $noGuest = $_POST['noGuest'];
-
+echo $strtDate;
+echo $endDate;
+echo $noGuest;
 ?>
 
 <main>
@@ -17,10 +19,11 @@ $noGuest = $_POST['noGuest'];
         <input type="text" name="noCard" pattern = "[1-9]{16}" maxlength = "16" placeholder="Card Number">
         <input type="month" name="dateCard" placeholder="Expiration Date">
         <input type="text" name="codeCard" pattern = "[1-9]{3}" maxlength = "3" placeholder="Security Code"> <br>
-        <input type="hidden" name="startDate" value= "<?php $_POST['startDate'];?>" />
-        <input type="hidden" name="endDate" value= "<?php $_POST['endDate'];?>" />
-        <input type="hidden" name="noGuest" value= "<?php $_POST['noGuest'];?>" />
-        <button type="submit" name="payment-submit">Continue</button>
+        <input type="hidden" name="startDate" value= "<?php echo $strtDate; ?>">
+        <input type="hidden" name="endDate" value= "<?php echo $endDate; ?>">
+        <input type="hidden" name="noGuest" value= "<?php echo $noGuest; ?>">
+        <button type="submit" name="payment-submit">Reserve Residence</button>
+        
     </form>
 
 </main>
