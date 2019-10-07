@@ -7,9 +7,9 @@
     <form action="payment.php" method="post">
         <label>Reserve Date:</label><br>
         <label>From:</label><br>
-        <input type="date" name="startDate"><br>
+        <input type="date" name="toDate"><br>
         <label>To:</label><br>
-        <input type="date" name="endDate"><br>
+        <input type="date" name="fromDate"><br>
         <label>Guest:</label><br>
         <select name="noGuest" type=number>
             <option value="" disabled selected>Select no. of guest</option>

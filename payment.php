@@ -1,7 +1,7 @@
 <?php
 
-$strtDate = $_POST['startDate'];
-$endDate = $_POST['endDate'];
+$strtDate = $_POST['toDate'];
+$endDate = $_POST['fromDate'];
 $noGuest = $_POST['noGuest'];
 echo $strtDate;
 echo $endDate;
