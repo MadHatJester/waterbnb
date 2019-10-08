@@ -1,37 +1,39 @@
 <?php
-    session_start();
-    include "includes\dbh.inc.php";
+session_start();
+include "includes\dbh.inc.php";
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title></title>
 
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Waterbnb</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
 
-        <header>
-                <div class="container">
-                    <?php
-                        if (isset($_SESSION['userId'])) {
-                          echo"Welcome ".$_SESSION['userUid'];
-                            //echo '
-                            //<form action="includes/logout.inc.php" method="post">
-                            //<button type="submit" name="logout-submit">Logout</button>
-                            //</form>';
-                            //
-                        }
+<body>
 
-                        else {
-                            echo '<form action="includes/login.inc.php" method="post">
-                            <input type="text" name="mailuid" placeholder="Username/E-mail...">
-                            <input type="password" name="pwd" placeholder="Password...">
-                            <button type="submit" name="login-submit">Login</button>
-                            </form>
-                            <a href="signup.php">Signup</a>';
-                        }
-                    ?>
-                </div>
-        </header>
+    <header>
+        <div class="container">
+            <?php
+            if (isset($_SESSION['userId'])) {
+                echo "Welcome " . $_SESSION['userUid'];
+            } else {
+                echo '
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Waterbnb</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">Page 1</a></li>
+                            <li><a href="#">Page 2</a></li>
+                            <li><a href="#">Page 3</a></li>
+                        </ul>
+                    </div>
+                </nav>';
+            }
+            ?>
+        </div>
+    </header>

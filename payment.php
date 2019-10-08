@@ -1,11 +1,8 @@
 <?php
-
-$strtDate = $_POST['toDate'];
-$endDate = $_POST['fromDate'];
-$noGuest = $_POST['noGuest'];
-echo $strtDate;
-echo $endDate;
-echo $noGuest;
+    require "header.php";
+    $strtDate = $_POST['toDate'];
+    $endDate = $_POST['fromDate'];
+    $noGuest = $_POST['noGuest'];
 ?>
 
 <main>

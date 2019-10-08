@@ -4,3 +4,7 @@
 <form action="occupant_index.php">
     <button type="submit">Home</button>
 </form>
+
+<?php
+require "footer.php";
+?>

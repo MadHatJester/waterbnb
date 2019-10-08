@@ -1,0 +1,38 @@
+body{
+    background-color: #f4f4f4;
+    color: #555555;;
+
+    font: normal 16px Arial, Helvetica, sans-serif;
+    line-height: 1.6em;
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    width:640px;
+    margin:auto;
+}
+
+.box-1{
+    background-color: #ffffff;
+    columns: #333333;;
+    border: 5px lightblue solid;
+    padding:40px;
+    margin-top:50px;
+    border-radius: 15px;
+}
+
+.box-1 h1{
+    font-family: Tahoma;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.box-1 a{
+    text-decoration: none;
+    color: red;
+}

@@ -1,5 +1,5 @@
 <?php
-include "occupant_index.php";
+    require "header.php";
 ?>
 
 <main>

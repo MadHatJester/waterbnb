@@ -1,3 +1,7 @@
+<?php
+    require "header.php";
+?>
+
 <main>
     <nav>
         <h2>Welcome Host!</h2>  

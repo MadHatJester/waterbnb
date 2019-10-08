@@ -1,6 +1,5 @@
 <?php
-    include "header.php";
-    include "includes\dbh.inc.php";
+    require "header.php";
 ?>
 
 <main>
