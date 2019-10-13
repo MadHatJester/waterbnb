@@ -3,7 +3,8 @@
 ?>
 
     <main>
-        <h1>Signup</h1>
+	<div class="container-fluid p-2 m-auto bg-info">
+        <h1>Sign-up</h1>
             <?php
                 if(isset($_GET['error'])) {
                     if($_GET['error'] == "emptyfields") {
@@ -29,19 +30,38 @@
                     echo '<p>Signup successful!</p>';
                 }
             ?>
+			
+			
+		<div class="container p-2 m-auto bg-white">
         <form action="includes/signup.inc.php" method="post">
+			<div class = "form-group">
             <input type="text" name="username" placeholder="Username"><br>
-            <input type="text" name="usermail" placeholder="E-mail"><br>
-            <input type="text" name=firstname placeholder="First Name"><br>
-            <input type="text" name=lastname placeholder="Last Name"><br>
-            <input type="password" name="pwd" placeholder="Password"><br>
-            <input type="password" name="pwd-repeat" placeholder="Repeat password"><br>
-            <select name="usertype">
+            </div>
+			<div class = "form-group">
+			<input type="text" name="usermail" placeholder="E-mail"><br>
+            </div>
+			<div class = "form-group">
+			<input type="text" name=firstname placeholder="First Name"><br>
+			</div>
+			<div class = "form-group">
+			<input type="text" name=lastname placeholder="Last Name"><br>
+            </div>
+ 		    <div class = "form-group">
+			<input type="password" name="pwd" placeholder="Password"><br>
+            </div>
+			<div class = "form-group">
+		    <input type="password" name="pwd-repeat" placeholder="Repeat password"><br>
+            </div>
+			<div class = "form-group">
+			<select name="usertype">
             <option value="host">Host</option>
             <option value="occupant">Occupant</option>
             </select><br>
-            <button type="submit" name="signup-submit">Signup</button><br>
+			</div>
+            <button class="btn btn-info" type="submit" name="signup-submit">Signup</button><br>
         </form>
+		</div>
+	</div>
     </main>
 
 <?php
