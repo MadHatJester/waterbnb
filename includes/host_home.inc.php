@@ -11,13 +11,14 @@ if(isset($_POST['host-submit'])) {
     $zipHomes = $_POST['zip'];
     $cityHomes = $_POST['city'];
     $feeHome = $_POST['rentalFee'];
+    $user = $_POST['uid'];
 
     if (empty($titleHome) || empty($typeHome) || empty($guestHome) || empty($feeHome) || empty($noHomes) || empty($streeHomes) || empty($bgyHomes) || empty($zipHomes) || empty($cityHomes)) {
         header("Location: ../host_home.php?error=emptyfields&homeTitle=".$titleHome."&homeType=".$typeHome."&noGuests=".$guestHome."&rentalFee=".$feeHome."&streetNo=".$noHomes."&streeName=".$streeHomes."&barangay=".$bgyHomes."&zip=".$zipHomes."&city=".$cityHomes);
         exit();
     }
     else {
-        $sql = "SELECT idHomes FROM homes WHERE idHomes=?";
+        $sql = "SELECT ResidenceID FROM residence WHERE ResidenceID=?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../host_home.php?error=sqlerror1");
@@ -33,14 +34,14 @@ if(isset($_POST['host-submit'])) {
                 exit();
             }
             else {
-                $sql = "INSERT INTO homes (titleHomes, typeHomes, guestHomes, noHomes, streetHomes, bgyHomes, zipHomes, cityHomes, feeHomes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO residence (ResidenceName, ResidenceType, GuestNumber, StreetNumber, StreetName, Barangay, ZIPCode, City, RentalFee, UserID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)) {
                     header("Location: ../host_home.php?error=sqlerror2");
                     exit();    
                 }
                 else {
-                    mysqli_stmt_bind_param($stmt, "ssiissisi", $titleHome, $typeHome, $guestHome, $noHomes, $streeHomes, $bgyHomes, $zipHomes, $cityHomes, $feeHome);
+                    mysqli_stmt_bind_param($stmt, "ssiissisii", $titleHome, $typeHome, $guestHome, $noHomes, $streeHomes, $bgyHomes, $zipHomes, $cityHomes, $feeHome, $user);
                     mysqli_stmt_execute($stmt);
                     header("Location: ../host_index.php?hosting=success");
                     exit();

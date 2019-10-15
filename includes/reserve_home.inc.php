@@ -2,11 +2,9 @@
 if(isset($_POST['reserve-submit'])) {
 
     require 'dbh.inc.php';
-    $titleHome = $_POST['homeTitle'];
-    $typeHome = $_POST['homeType'];
-    $guestHome = $_POST['noGuests'];
-    $addressHome = $_POST['address'];
-    $feeHome = $_POST['rentalFee'];
+    $strtDate = $_POST['toDate'];
+    $endDate = $_POST['fromDate'];
+	$noGuest = $_POST['noGuest'];
 
     if (empty($titleHome) || empty($typeHome) || empty($guestHome) || empty($addressHome) || empty($feeHome)) {
         header("Location: ../host_home.php?error=emptyfields&homeTitle=".$titleHome."&homeType=".$typeHome."&noGuests=".$guestHome."&address=".$addressHome."&rentalFee=".$feeHome);

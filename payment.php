@@ -1,9 +1,5 @@
 <?php
 	require "occupant_index.php";
-    $strtDate = $_POST['toDate'];
-    $endDate = $_POST['fromDate'];
-    $noGuest = $_POST['noGuest'];
-
 ?>
 
 <main>
@@ -24,12 +20,16 @@
 				
 				<div class = "form-group">
 					<label>Card Info:</label><br>
-					<input type="text" name="noCard" pattern = "[1-9]{16}" maxlength = "16" placeholder="Card Number">
-					<input type="month" name="dateCard" placeholder="Expiration Date">
-					<input type="text" name="codeCard" pattern = "[1-9]{3}" maxlength = "3" placeholder="Security Code"> <br>
+					<input type="text" name="noCard" pattern = "[0-9]{16}" maxlength = "16" placeholder="Card Number">
+					<input type="text" name="monthCard" size="1" pattern = "[0-9]{2}" maxlength = "2" placeholder="mm">
+					/
+					<input tpye="text" name="yearCard" size="1" pattern = "[0-9]{2}" maxlength = "2" placeholder="yy">
+					<input type="text" name="codeCard" size="2" pattern = "[0-9]{3}" maxlength = "3" placeholder="CVC"> <br>
 					<input type="hidden" name="startDate" value= "<?php echo $strtDate; ?>">
 					<input type="hidden" name="endDate" value= "<?php echo $endDate; ?>">
 					<input type="hidden" name="noGuest" value= "<?php echo $noGuest; ?>">
+					<input type="hidden" name="rid" value= "<?php echo $rid; ?>">
+					<input type="hidden" name="uid" value="<?php echo $_SESSION['userId']; ?>">
 				</div>
 				
 				<button class="btn btn-primary" type="submit" name="payment-submit">Continue</button>

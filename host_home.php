@@ -1,5 +1,5 @@
 <?php
-    require "host_index.php"
+    include "header.php"
 ?>
 
 <main>
@@ -51,16 +51,17 @@
 			
 			<div class = "form-group">
 			<label>Residence Address</label><br>
-			<input type="text" name="streetNo" pattern = "[1-9]{16}" placeholder="Stree No.">
+			<input type="text" name="streetNo" pattern = "[0-9]{1,}"  maxlength = "4" placeholder="Street No.">
 			<input type="text" name="streeName" placeholder="Street Name">
 			<input type="text" name="barangay" placeholder="Barangay"><br>
-			<input type="text" name="zip" pattern = "[1-9]{4}" maxlength = "4" placeholder="ZIP Code">
+			<input type="text" name="zip" pattern = "[0-9]{4}" maxlength = "4" placeholder="ZIP Code">
 			<input type="text" name="city" placeholder="City"><br>
+			<input type="hidden" name="uid" value="<?php echo $_SESSION['userId']; ?>">
 			</div>
 			
 			<div class = "form-group">
 			<label>Rental Fee</label><br>
-			<input type="text" name="rentalFee" pattern = "[1-9]{16}" placeholder="Input a number"><br><br>
+			<input type="text" name="rentalFee" pattern = "[0-9]{1,}" placeholder="Input a number"><br><br>
 			<button class="btn btn-primary" type="submit" name="host-submit">Host a Residence</button><br>
 			</div>
 		</form>

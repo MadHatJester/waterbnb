@@ -7,15 +7,15 @@ include "occupant_index.php";
     <?php
     if (isset($_POST['search-submit'])) {
       $search = mysqli_real_escape_string($conn, $_POST['search']);
-      $sql = "SELECT * FROM homes WHERE
-              titleHomes LIKE '%$search%' OR
-              noHomes LIKE '%$search%' OR
-              streetHomes LIKE '%$search%' OR
-              bgyHomes LIKE '%$search%' OR
-              zipHomes LIKE '%$search%' OR
-              cityHomes LIKE '%$search%' OR
-              typeHomes LIKE '%$search%' OR
-              guestHomes LIKE '%$search%'";
+      $sql = "SELECT * FROM residence WHERE
+              ResidenceName LIKE '%$search%' OR
+              StreetNumber LIKE '%$search%' OR
+              StreetName LIKE '%$search%' OR
+              Barangay LIKE '%$search%' OR
+              ZIPCode LIKE '%$search%' OR
+              City LIKE '%$search%' OR
+              ResidenceType LIKE '%$search%' OR
+              GuestNumber LIKE '%$search%'";
       $result = mysqli_query($conn, $sql);
       $queryResults = mysqli_num_rows($result);
       //echo $queryResults, $search;
@@ -26,10 +26,10 @@ include "occupant_index.php";
 			while ($row = mysqli_fetch_assoc($result)) {
 				echo "
 				<div class = 'container p-3 mb-2 bg-info text-white'>
-					  <a href='reserve_home.php'><h3>" . $row['titleHomes'] . "</h3></a>
-					  <p>Location: " . $row['noHomes'] . " " . $row['streetHomes'] . ", " . $row['bgyHomes'] . ", " . $row['zipHomes'] . ", " . $row['cityHomes'] . "</p>
-					  <p>Type: " . $row['typeHomes'] . "</p>
-					  <p>No. of Guest: " . $row['guestHomes']."</p>
+					  <a href='reserve_home.php?&rid=".$row['ResidenceID']."'><h3>" . $row['ResidenceName'] . "</h3></a>
+					  <p>Location: " . $row['StreetNumber'] . " " . $row['StreetName'] . ", " . $row['Barangay'] . ", " . $row['ZIPCode'] . ", " . $row['City'] . "</p>
+					  <p>Type: " . $row['ResidenceType'] . "</p>
+					  <p>No. of Guest: " . $row['GuestNumber']."</p>
 				</div>";
         }
       } else {
@@ -42,7 +42,7 @@ include "occupant_index.php";
     ?>
   </div>
 </main>
-
+?hosting=success&transacno=".$transacNo
 <?php
 require "footer.php";
 ?>
