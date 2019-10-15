@@ -42,7 +42,7 @@ include "occupant_index.php";
     ?>
   </div>
 </main>
-?hosting=success&transacno=".$transacNo
+
 <?php
 require "footer.php";
 ?>

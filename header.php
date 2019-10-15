@@ -1,33 +1,31 @@
 <?php
-    session_start();
-    include "includes\dbh.inc.php";
+session_start();
+include "includes\dbh.inc.php";
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-		<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
-        <title>WaterBNB</title>
 
-    </head>
-    <body>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+	<title>WaterBNB</title>
 
-        <header>
-                <div class="container">
-                    <?php
-                        if (isset($_SESSION['userId'])) {
-                          	/* echo"Welcome ".$_SESSION['userUid'];
+</head>
+
+<body>
+
+	<header>
+		<div class="container">
+			<?php
+			if (isset($_SESSION['userId'])) {
+				/* echo"Welcome ".$_SESSION['userUid'];
                             
 							
 							echo '
                             <form action="includes/logout.inc.php" method="post">
                             <button type="submit" name="logout-submit">Logout</button>
-                            </form>'; */
-                            
-                        }
-
-                        else {
-                            echo '
+                            </form>'; */ } else {
+				echo '
 							
 							<nav class="navbar navbar-default">
 	
@@ -59,8 +57,8 @@
 								<br></form>
 							</div><br>
 							
-							';					
-                        }
-                    ?>
-                </div>
-        </header>
+							';
+			}
+			?>
+		</div>
+	</header>

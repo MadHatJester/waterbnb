@@ -4,39 +4,41 @@ if(isset($_POST['reserve-submit'])) {
     require 'dbh.inc.php';
     $strtDate = $_POST['toDate'];
     $endDate = $_POST['fromDate'];
-	$noGuest = $_POST['noGuest'];
+    $noGuest = $_POST['noGuest'];
+    $rid = $_POST['rid'];
+    $uid = $_POST['uid'];
 
-    if (empty($titleHome) || empty($typeHome) || empty($guestHome) || empty($addressHome) || empty($feeHome)) {
-        header("Location: ../host_home.php?error=emptyfields&homeTitle=".$titleHome."&homeType=".$typeHome."&noGuests=".$guestHome."&address=".$addressHome."&rentalFee=".$feeHome);
+    if (empty($strtDate) || empty($endDate) || empty($noGuest)) {
+        header("Location: ../reserve_home.php?error=emptyfields&startdate=".$strtDate."&enddate=".$endDate."&noGuests=".$noGuest);
         exit();
     }
     else {
-        $sql = "SELECT idHomes FROM homes WHERE idHomes=?";
+        $sql = "SELECT ReservationID FROM reservation WHERE ReservationID=?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../host_home.php?error=sqlerror1");
+            header("Location: ../reserve_home.php?error=sqlerror1");
             exit();
         }
         else {
-            mysqli_stmt_bind_param($stmt, "s", $titleHome);
+            mysqli_stmt_bind_param($stmt, "s", $strtDate);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
             $resultCheck = mysqli_stmt_num_rows($stmt);
             if ($resultCheck > 0) {
-                header("Location: ../host_home.php?error=titletaken&mail=".$titleHome);
+                header("Location: ../reserve_home.php?error=datetaken");
                 exit();
             }
             else {
-                $sql = "INSERT INTO homes (titleHomes, typeHomes, guestHomes, addressHomes, feeHomes) VALUES (?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO Reservation (StartDate, EndDate, GuestNumber, UserID, ResidenceID) VALUES (?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("Location: ../host_home.php?error=sqlerror2");
+                    header("Location: ../reserve_home.php?error=sqlerror2");
                     exit();
                 }
                 else {
-                    mysqli_stmt_bind_param($stmt, "ssisi", $titleHome, $typeHome, $guestHome, $addressHome, $feeHome);
+                    mysqli_stmt_bind_param($stmt, "ssiii", $strtDate, $endDate, $noGuest, $uid, $rid);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../host_index.php?hosting=success");
+                    header("Location: ../payment.php?hosting=success");
                     exit();
                 }
             }
@@ -50,6 +52,6 @@ if(isset($_POST['reserve-submit'])) {
 
 }
 else {
-    header("Location: ../host_home.php");
+    header("Location: ../reserve_home.php");
     exit();
 }
