@@ -9,7 +9,7 @@ include "header.php";
             <nav class="navbar navbar-default">
 		
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="host_index.php">
+                    <a class="navbar-brand" href="host_homepage.php">
                         <img src="img/logo.jpg" height="42" width="42">
                 </div>
             
