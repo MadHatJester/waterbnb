@@ -7,7 +7,9 @@ include "includes\dbh.inc.php";
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
 	<title>WaterBNB</title>
 
 </head>
@@ -17,14 +19,9 @@ include "includes\dbh.inc.php";
 	<header>
 		<div class="container">
 			<?php
-			if (isset($_SESSION['userId'])) {
-				/* echo"Welcome ".$_SESSION['userUid'];
-                            
-							
-							echo '
-                            <form action="includes/logout.inc.php" method="post">
-                            <button type="submit" name="logout-submit">Logout</button>
-                            </form>'; */ } else {
+			if (isset($_SESSION['userId'])) { 
+				
+			} else {
 				echo '
 							
 							<nav class="navbar navbar-default">
@@ -53,7 +50,7 @@ include "includes\dbh.inc.php";
 								<input type="password" name="pwd" placeholder="Password...">
 								</div>
 								<div class="form-check">
-								<button type="submit" name="login-submit">Login</button>
+								<button id="logoutbtn" type="submit" name="login-submit">Login</button>
 								<br></form>
 							</div><br>
 							
@@ -62,3 +59,10 @@ include "includes\dbh.inc.php";
 			?>
 		</div>
 	</header>
+
+	<script>
+		var btn = document.getElementById("logoutbtn");
+		btn.onclick = function() {
+			localStorage.clear();
+		}
+	</script>

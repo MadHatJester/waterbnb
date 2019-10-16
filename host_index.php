@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-include "includes\dbh.inc.php";
 ?>
 
 <main>
@@ -16,21 +15,27 @@ include "includes\dbh.inc.php";
             
                 <ul  class="nav">
                     <li class="nav-item mr-4 "><a href="host_home.php">Host a Home</a></li>
-                    <li class="nav-item mr-4 "><a href="host_index.php">Home -' . $_SESSION['userUid'] . '</a></li>
+                    <li class="nav-item mr-4 "><a href="host_homepage.php">Home -' . $_SESSION['userUid'] . '</a></li>
                     <li class="nav-item mr-4 "><a href="#">Profile</a></li>
                     <li class="nav-item mr-4 "><form action="includes/logout.inc.php" method="post">
                         <button type="submit" name="logout-submit">Logout</button>
                         </form></li>
                 </ul>
             </nav>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="poof">&times;</span>
+                    <h2>Welcome Host ' . $_SESSION['userUid'] . '!</h2>
+                </div>
+            </div>
             ';
-    } else { 
+    } else {
         header("Location: index.php");
     }
     ?>
-
-
 </main>
+
+<script type="text/javascript" src="js/modal.js"></script>
 
 <?php
 require "footer.php";

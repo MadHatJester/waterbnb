@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-include "includes\dbh.inc.php";
 ?>
 
 <main>
@@ -28,12 +27,20 @@ include "includes\dbh.inc.php";
                 <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search a Home">
                 <button type="submit" name="search-submit">Search</button></form>
         </ul>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="poof">&times;</span>
+                <h2>Welcome Occupant ' . $_SESSION['userUid'] . '!</h2>
+            </div>
+        </div>
         ';
     } else {
         header("Location: index.php");
     }
     ?>
 </main>
+
+<script type="text/javascript" src="js/modal.js"></script>
 
 <?php
 require "footer.php";

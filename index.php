@@ -10,12 +10,12 @@
                     echo '
                     <p>This is host!</p>
                     ';
-                    header("Location: host_index.php");
+                    header("Location: host_homepage.php");
 
                 }
                 elseif ($_SESSION['userType'] == 'occupant') {
                     echo '<p>This is occupant!</p>';
-                    header("Location: occupant_index.php");
+                    header("Location: occupant_homepage.php");
                     
                 }
             }
