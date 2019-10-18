@@ -8,7 +8,7 @@ include "header.php"
 		<h1>Host a Home</h1>
 
 		<div class="container p-2 m-auto bg-white">
-			<form action="includes/host_home.inc.php" method="post">
+			<form action="includes/host_home.inc.php" method="post" enctype="multipart/form-data">
 
 				<div class="form-group">
 					<label>Residence Title</label><br>
@@ -46,7 +46,7 @@ include "header.php"
 						<option value="11">11</option>
 						<option value="12">12</option>
 					</select><br>
-					<!-- <input type="number" name="noGuests" placeholder="Input a number"><br> -->
+
 				</div>
 
 				<div class="form-group">
@@ -62,9 +62,16 @@ include "header.php"
 				<div class="form-group">
 					<label>Rental Fee</label><br>
 					<input type="text" name="rentalFee" pattern="[0-9]{1,}" placeholder="Input a number"><br><br>
+					<label>Residence Picture</label><br>
+					<input type="file" name="file"><br><br>
 					<button class="btn btn-primary" type="submit" name="host-submit">Host a Residence</button><br>
 				</div>
 			</form>
+
+			<!-- <form action="upload.php" method="post" enctype="multipart/form-data">
+				<input type="file" name="file">
+				<button type="submit" name="submit">UPLOAD</button>
+			</form><br><br> -->
 		</div>
 	</div>
 </main>

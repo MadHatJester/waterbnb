@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2019 at 06:56 PM
+-- Generation Time: Oct 18, 2019 at 06:46 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -75,7 +75,31 @@ CREATE TABLE `residence` (
 INSERT INTO `residence` (`ResidenceID`, `ResidenceName`, `ResidenceType`, `GuestNumber`, `StreetNumber`, `StreetName`, `Barangay`, `ZIPCode`, `City`, `RentalFee`, `UserID`) VALUES
 (1, 'Tree House', 'loft', 4, 120, 'Sampaguita', 'Tanyag', 4210, 'Taguig', 300, 1),
 (2, 'Water Bowl', 'cottage', 3, 420, 'Marine', 'Pearl', 8795, 'Atlantis', 699, 1),
-(3, 'Fire House', 'bungalow', 6, 6969, 'Inferno', 'Corner', 1111, 'Hilden', 996, 2);
+(3, 'Fire House', 'bungalow', 6, 6969, 'Inferno', 'Corner', 1111, 'Hilden', 996, 2),
+(4, 'Air Tent', 'cottage', 3, 456, 'Noctus', 'Bicutan', 7686, 'Pasay', 800, 1),
+(7, 'Earth Cabin', 'bungalow', 7, 133, 'Hearth', 'Muntinlupa', 5812, 'Batangas', 678, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `residenceimg`
+--
+
+CREATE TABLE `residenceimg` (
+  `ImageID` int(11) NOT NULL,
+  `ResidenceID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `residenceimg`
+--
+
+INSERT INTO `residenceimg` (`ImageID`, `ResidenceID`) VALUES
+(5, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -148,6 +172,13 @@ ALTER TABLE `residence`
   ADD KEY `UserID` (`UserID`);
 
 --
+-- Indexes for table `residenceimg`
+--
+ALTER TABLE `residenceimg`
+  ADD PRIMARY KEY (`ImageID`),
+  ADD KEY `ResidenceID` (`ResidenceID`);
+
+--
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -174,7 +205,13 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT for table `residence`
 --
 ALTER TABLE `residence`
-  MODIFY `ResidenceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ResidenceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `residenceimg`
+--
+ALTER TABLE `residenceimg`
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -204,6 +241,12 @@ ALTER TABLE `reservation`
 --
 ALTER TABLE `residence`
   ADD CONSTRAINT `residence_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
+
+--
+-- Constraints for table `residenceimg`
+--
+ALTER TABLE `residenceimg`
+  ADD CONSTRAINT `residenceimg_ibfk_1` FOREIGN KEY (`ResidenceID`) REFERENCES `residence` (`ResidenceID`);
 
 --
 -- Constraints for table `transactions`

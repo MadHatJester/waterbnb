@@ -21,11 +21,6 @@
             }
             else {
 
-                echo '
-				<div class="jumbotron"
-				<p>You are logged out!</p>
-				</div>
-				';
             }
         ?>
 
