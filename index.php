@@ -10,37 +10,17 @@
                     echo '
                     <p>This is host!</p>
                     ';
-                    header("Location: host_index.php");
+                    header("Location: host_homepage.php");
 
                 }
                 elseif ($_SESSION['userType'] == 'occupant') {
                     echo '<p>This is occupant!</p>';
-                    header("Location: occupant_index.php");
-                    echo'
-                    <h1>Listed Spaces</h1>
-                    <div class="container">';
-
-                        $sql = "SELECT * FROM homes";
-                        $result = mysqli_query($conn, $sql);
-                        $queryResults = mysqli_num_rows($result);
-
-                        if ($queryResults>0) {
-                          while ($row = mysqli_fetch_assoc($result)) {
-                            echo'<div>
-                              <h3>'.$row['titleHomes'].'</h3>
-                              <p>Location: '.$row['addressHomes'].'</p>
-                              <p>Type: '.$row['typeHomes']."</p>
-                              <p>No. of Guest: ".$row['guestHomes']."</p>
-                            </div>";
-                          }
-                        }
-                    echo"</div>";
-
+                    header("Location: occupant_homepage.php");
+                    
                 }
             }
             else {
 
-                echo '<p>You are logged out!</p>';
             }
         ?>
 

@@ -6,34 +6,63 @@ include "includes\dbh.inc.php";
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Waterbnb</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>WaterBNB</title>
+
 </head>
 
 <body>
 
-    <header>
-        <div class="container">
-            <?php
-            if (isset($_SESSION['userId'])) {
-                echo "Welcome " . $_SESSION['userUid'];
-            } else {
-                echo '
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">Waterbnb</a>
-                        </div>
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
-                    </div>
-                </nav>';
-            }
-            ?>
-        </div>
-    </header>
+	<header>
+		<div class="container">
+			<?php
+			if (isset($_SESSION['userId'])) { 
+				
+			} else {
+				echo '
+							
+							<nav class="navbar navbar-default">
+	
+								<div class="navbar-header">
+									<a class="navbar-brand" href="#">
+									<img src="img/logo.jpg" height="50" width="50">
+								</div>
+								
+								<ul class="nav justify-content-end mr-3 ">
+									<li class="nav-item mr-4 "><a href="#">Home</a></li>
+									<li class="nav-item mr-4 "><a href="#">About Us</a></li>
+									<li class="nav-item mr-4 "><a href="signup.php">Sign-up</a></li>
+								</ul>
+							</nav>
+							
+							
+							<div class="container-fluid p-3 m-right bg-white">
+								<form action="includes/login.inc.php" method="post">
+								<div class = "form-group">
+								<label>Username/E-mail:</label><br>
+								<input type="text" name="mailuid" placeholder="Username/E-mail...">
+								</div>
+								<div class = "form-group">
+								<label>Password:</label><br>
+								<input type="password" name="pwd" placeholder="Password...">
+								</div>
+								<div class="form-check">
+								<button id="logoutbtn" type="submit" name="login-submit">Login</button>
+								<br></form>
+							</div><br>
+							
+							';
+			}
+			?>
+		</div>
+	</header>
+
+	<script>
+		var btn = document.getElementById("logoutbtn");
+		btn.onclick = function() {
+			localStorage.clear();
+		}
+	</script>
