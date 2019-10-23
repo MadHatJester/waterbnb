@@ -63,15 +63,10 @@ include "header.php"
 					<label>Rental Fee</label><br>
 					<input type="text" name="rentalFee" pattern="[0-9]{1,}" placeholder="Input a number"><br><br>
 					<label>Residence Picture</label><br>
-					<input type="file" name="file"><br><br>
+					<input type="file" name="files[]" multiple><br><br>
 					<button class="btn btn-primary" type="submit" name="host-submit">Host a Residence</button><br>
 				</div>
 			</form>
-
-			<!-- <form action="upload.php" method="post" enctype="multipart/form-data">
-				<input type="file" name="file">
-				<button type="submit" name="submit">UPLOAD</button>
-			</form><br><br> -->
 		</div>
 	</div>
 </main>

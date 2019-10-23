@@ -19,20 +19,18 @@ include "includes\dbh.inc.php";
 	<header>
 		<div class="container">
 			<?php
-			if (isset($_SESSION['userId'])) { 
-				
-			} else {
+			if (isset($_SESSION['userId'])) { } else {
 				echo '
 							
 							<nav class="navbar navbar-default">
 	
 								<div class="navbar-header">
-									<a class="navbar-brand" href="#">
+									<a class="navbar-brand" href="index.php">
 									<img src="img/logo.jpg" height="50" width="50">
 								</div>
 								
 								<ul class="nav justify-content-end mr-3 ">
-									<li class="nav-item mr-4 "><a href="#">Home</a></li>
+									<li class="nav-item mr-4 "><a href="index.php">Home</a></li>
 									<li class="nav-item mr-4 "><a href="#">About Us</a></li>
 									<li class="nav-item mr-4 "><a href="signup.php">Sign-up</a></li>
 								</ul>

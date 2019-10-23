@@ -34,7 +34,8 @@ include "occupant_index.php";
             <p>Location: " . $row['StreetNumber'] . " " . $row['StreetName'] . ", " . $row['Barangay'] . ", " . $row['ZIPCode'] . ", " . $row['City'] . "</p>
             <p>Type: " . $row['ResidenceType'] . "</p>
             <p>No. of Guest: " . $row['GuestNumber'] . "</p>
-            <p>Pictures: <img src='includes/uploads/residence" . $imgid . ".jpg'>
+            <p>Pictures: 
+            <div class='mx-auto' style='width: 70%;'><img src='includes/uploads/residence" . $imgid . ".jpg' class='img-fluid rounded' width='720'></div>
         </div>";
                     }
                 }
