@@ -23,7 +23,7 @@ if ($queryResults > 0) {
 				<p>No. of Guest: " . $row['GuestNumber'] . "</p>	
 			";
 
-			for($imgdef = 1; $imgdef <= 3; $imgdef++) {
+			for($imgdef = 1; $imgdef <= $rowImg['ImageNumber']; $imgdef++) {
 				echo "<p>Pictures: <div class='mx-auto' style='width: 70%;'><img src='includes/uploads/residence" . $imgid . " - ". $imgdef .".jpg' class='img-fluid rounded' width='720'></div>";
 			}
 				
