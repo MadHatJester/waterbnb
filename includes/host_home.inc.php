@@ -81,21 +81,26 @@ if (isset($_POST['host-submit'])) {
                                     $filePath = $uploadDir . $fileNameNew;
 
                                     if (move_uploaded_file($fileTmpName, $filePath)) {
+                                        header("Location: ../host_homepage.php?success");
                                         echo "{$fileNameNew} successfully uploaded <br />";
                                     } else {
+                                        header("Location: ../host_home.php?error=uploadfailed");
                                         echo "Error uploading {$fileName} <br />";
                                     }
                                 } else {
 
                                     if (move_uploaded_file($fileTmpName, $filePath)) {
+                                        header("Location: ../host_homepage.php?success");
                                         echo "{$fileNameNew} successfully uploaded <br />";
                                     } else {
+                                        header("Location: ../host_home.php?error=uploadfailed");
                                         echo "Error uploading {$fileName} <br />";
                                     }
                                 }
                             } else {
 
                                 // If file extention not valid 
+                                header("Location: ../host_home.php?error=imgtype");
                                 echo "Error uploading {$fileName} ";
                                 echo "({$fileExt} file type is not allowed)<br / >";
                             }
@@ -121,6 +126,6 @@ if (isset($_POST['host-submit'])) {
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 } else {
-    header("Location: ../host_home.php");
+    header("Location: ../host_homepage.php");
     exit();
 }
