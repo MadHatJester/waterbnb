@@ -18,8 +18,8 @@ include "header.php";
 </form>
 
 </div>
-</html>
 
 <?php
 require "footer.php";
 ?>
+</html>

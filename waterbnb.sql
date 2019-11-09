@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2019 at 06:46 PM
+-- Generation Time: Oct 25, 2019 at 05:13 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -46,7 +46,8 @@ INSERT INTO `reservation` (`ReservationID`, `StartDate`, `EndDate`, `GuestNumber
 (2, '2019-10-15', '2019-10-16', 3, 3, 1),
 (3, '2019-10-08', '2019-10-09', 4, 3, 1),
 (4, '2019-10-16', '2019-10-17', 5, 3, 1),
-(5, '2019-10-16', '2019-10-17', 4, 3, 2);
+(5, '2019-10-16', '2019-10-17', 4, 3, 2),
+(6, '2019-10-22', '2019-10-23', 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,8 @@ INSERT INTO `residence` (`ResidenceID`, `ResidenceName`, `ResidenceType`, `Guest
 (2, 'Water Bowl', 'cottage', 3, 420, 'Marine', 'Pearl', 8795, 'Atlantis', 699, 1),
 (3, 'Fire House', 'bungalow', 6, 6969, 'Inferno', 'Corner', 1111, 'Hilden', 996, 2),
 (4, 'Air Tent', 'cottage', 3, 456, 'Noctus', 'Bicutan', 7686, 'Pasay', 800, 1),
-(7, 'Earth Cabin', 'bungalow', 7, 133, 'Hearth', 'Muntinlupa', 5812, 'Batangas', 678, 2);
+(7, 'Earth Cabin', 'bungalow', 7, 133, 'Hearth', 'Muntinlupa', 5812, 'Batangas', 678, 2),
+(24, 'Metal House', 'cottage', 6, 6969, 'AC/DC', 'Sandman', 1111, 'Rock', 678, 2);
 
 -- --------------------------------------------------------
 
@@ -87,19 +89,21 @@ INSERT INTO `residence` (`ResidenceID`, `ResidenceName`, `ResidenceType`, `Guest
 
 CREATE TABLE `residenceimg` (
   `ImageID` int(11) NOT NULL,
-  `ResidenceID` int(11) NOT NULL
+  `ResidenceID` int(11) NOT NULL,
+  `ImageNumber` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `residenceimg`
 --
 
-INSERT INTO `residenceimg` (`ImageID`, `ResidenceID`) VALUES
-(5, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(1, 7);
+INSERT INTO `residenceimg` (`ImageID`, `ResidenceID`, `ImageNumber`) VALUES
+(1, 1, 3),
+(2, 2, 4),
+(3, 4, 4),
+(4, 3, 3),
+(5, 7, 3),
+(27, 24, 2);
 
 -- --------------------------------------------------------
 
@@ -125,7 +129,8 @@ CREATE TABLE `transactions` (
 INSERT INTO `transactions` (`TransactionID`, `TransactionNumber`, `FirstName`, `LastName`, `CardNumber`, `CardDate`, `CardCode`, `ReservationID`) VALUES
 (1, '0', 'Host', 'Teban', 2147483647, '12-99', 321, 1),
 (2, '3GUzwJy', 'Jibba', 'Libba', 2147483647, '12-12', 567, 1),
-(3, 'AfR0Yj7', 'Jibba', 'Libba', 2147483647, '12-12', 567, 5);
+(3, 'AfR0Yj7', 'Jibba', 'Libba', 2147483647, '12-12', 567, 5),
+(4, 'zSlCbsU', 'Jibba', 'Libba', 2147483647, '12-12', 567, 6);
 
 -- --------------------------------------------------------
 
@@ -199,25 +204,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `residence`
 --
 ALTER TABLE `residence`
-  MODIFY `ResidenceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ResidenceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `residenceimg`
 --
 ALTER TABLE `residenceimg`
-  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
