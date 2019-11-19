@@ -15,7 +15,7 @@ include "header.php";
 
             <ul class="nav justify-content-end mr-3 ">
                 <li class="nav-item mr-4 "><a href="occupant_homepage.php">Home</a></li>
-                <li class="nav-item mr-4 "><a href="#">Profile - ' . $_SESSION['userUid'] . '</a></li>
+                <li class="nav-item mr-4 "><a href="occupant_profile.php">Profile - '.$_SESSION['userUid'].'</a></li>
                 <li class="nav-item mr-4 ">
                     <form action="includes/logout.inc.php" method="post"><button type="submit" name="logout-submit">Logout</button></form>
                 </li>

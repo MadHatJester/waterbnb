@@ -8,22 +8,22 @@
             <?php
                 if(isset($_GET['error'])) {
                     if($_GET['error'] == "emptyfields") {
-                        echo '<p>Fill in all fields!</p>';
+                        echo '<p class="text-danger" >*Fill in all fields!</p>';
                     }   
                     elseif($_GET['error'] == "invalidmailuid") {
-                        echo '<p>Invalid username and e-mail!</p>';
+                        echo '<p class="text-danger" >*Invalid username and e-mail!</p>';
                     }
                     elseif($_GET['error'] == "invalidmail") {
-                        echo '<p>Invalid e-mail!</p>';
+                        echo '<p class="text-danger" >*Invalid e-mail!</p>';
                     }
                     elseif($_GET['error'] == "invaliduid") {
-                        echo '<p>Invalid username!</p>';
+                        echo '<p class="text-danger" >*Invalid username!</p>';
                     }
                     elseif($_GET['error'] == "passwordcheck") {
-                        echo '<p>Your passwords do not match!</p>';
+                        echo '<p class="text-danger" >*Your passwords do not match!</p>';
                     }
                     elseif($_GET['error'] == "usertaken") {
-                        echo '<p>Username is already taken!</p>';
+                        echo '<p class="text-danger" >*Username is already taken!</p>';
                     }
                 }
                 elseif(isset($_GET['signup']) == "success") {

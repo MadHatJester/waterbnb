@@ -9,14 +9,14 @@ if(isset($_POST['reserve-submit'])) {
     $uid = $_POST['uid'];
 
     if (empty($strtDate) || empty($endDate) || empty($noGuest)) {
-        header("Location: ../reserve_home.php?error=emptyfields&startdate=".$strtDate."&enddate=".$endDate."&noGuests=".$noGuest);
+        header("Location: ../reserve_home.php?rid=".$rid."&error=emptyfields&startdate=".$strtDate."&enddate=".$endDate."&noGuests=".$noGuest);
         exit();
     }
     else {
         $sql = "SELECT ReservationID FROM reservation WHERE ReservationID=?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../reserve_home.php?error=sqlerror1");
+            header("Location: ../reserve_home.php?rid=".$rid."&error=sqlerror1");
             exit();
         }
         else {

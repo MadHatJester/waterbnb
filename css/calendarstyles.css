@@ -1,0 +1,73 @@
+/* select styles*/
+ol.date_select{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline;
+}
+
+/* calendar */
+table.calendar {
+  border-left:1px solid #999;
+  }
+
+tr.calendar-row	{  }
+
+td.calendar-day	{
+  min-height:80px;
+  font-size:11px;
+  position:relative;
+  }
+
+* html div.calendar-day
+  { height:80px; }
+
+td.calendar-day:hover {
+  background:#eceff5;
+  }
+
+td.calendar-day-np {
+  background:#fff;
+  min-height:80px;
+  }
+
+* html div.calendar-day-np {
+  height:80px;
+  }
+
+td.calendar-day-head {
+  text-transform: uppercase;
+  background: #fff;
+  font-weight: bold;
+  text-align: center;
+  width: 100x;
+  padding: 5px;
+  border-bottom: 1px solid #999;
+  border-top:1px solid #999;
+  border-right:1px solid #999;
+  }
+
+div.day-number {
+  /*background:#FFF;*/
+  padding: 0px;
+  color:#000;
+  font-weight:bold;
+  float:left;
+  margin: -20px 0 0 0;
+  width:20px;
+  /*text-align:center;*/
+  }
+
+/* shared styles */
+td.calendar-day, td.calendar-day-np {
+  width:100px;
+  height: 100px;
+  padding:5px;
+  border-bottom:1px solid #999;
+  border-right:1px solid #999;
+  }
+
+.event {
+  background-color: orange;
+  text-align: center;
+}

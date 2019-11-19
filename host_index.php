@@ -15,8 +15,8 @@ include "header.php";
             
                 <ul  class="nav">
                     <li class="nav-item mr-4 "><a href="host_home.php">Host a Home</a></li>
-                    <li class="nav-item mr-4 "><a href="host_homepage.php">Home -' . $_SESSION['userUid'] . '</a></li>
-                    <li class="nav-item mr-4 "><a href="#">Profile</a></li>
+                    <li class="nav-item mr-4 "><a href="host_homepage.php">Home</a></li>
+                    <li class="nav-item mr-4 "><a href="host_profile.php">Profile  -'.$_SESSION['userUid'].'</a></li>
                     <li class="nav-item mr-4 "><form action="includes/logout.inc.php" method="post">
                         <button type="submit" name="logout-submit">Logout</button>
                         </form></li>
