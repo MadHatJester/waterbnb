@@ -25,6 +25,7 @@ require "occupant_index.php";
 					/
 					<input tpye="text" name="yearCard" size="1" pattern="[0-9]{2}" maxlength="2" placeholder="yy">
 					<input type="text" name="codeCard" size="2" pattern="[0-9]{3}" maxlength="3" placeholder="CVC"> <br>
+					<input type="hidden" name="fee" value=<?php echo $_GET['fee'] ?>>
 					<!-- <input type="hidden" name="startDate" value= "?php echo $strtDate; ?>">
 					<input type="hidden" name="endDate" value= "?php echo $endDate; ?>">
 					<input type="hidden" name="noGuest" value= "?php echo $noGuest; ?>">

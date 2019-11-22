@@ -63,4 +63,7 @@ include "includes\dbh.inc.php";
 		btn.onclick = function() {
 			localStorage.clear();
 		}
+		function cancelSuccess() {
+			alert("Cancel Reservation Successful!");
+		}
 	</script>

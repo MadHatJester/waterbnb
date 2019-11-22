@@ -1,7 +1,6 @@
 <?php
 include "occupant_index.php";
 ?>
-
 <main>
 
 	<div class='p-3 m-2'>
@@ -9,28 +8,35 @@ include "occupant_index.php";
 		<div class='row'>
 			<div class='container col-lg-7 col-md-12'>
 
-					<?php
+				<?php
 
-					$rid = mysqli_real_escape_string($conn, $_GET['rid']);
-					$sql = "SELECT * FROM residence WHERE ResidenceID LIKE '$rid'";
-					$result = mysqli_query($conn, $sql);
-					$row = mysqli_fetch_assoc($result);
+				$rid = mysqli_real_escape_string($conn, $_GET['rid']);
+				$sql = "SELECT * FROM residence WHERE ResidenceID LIKE '$rid'";
+				$result = mysqli_query($conn, $sql);
+				$row = mysqli_fetch_assoc($result);
 
-					$imgid = $row['ResidenceID'];
-					$sqlImg = "SELECT * FROM residenceimg WHERE ResidenceID = '$imgid' ";
-					$resultImg = mysqli_query($conn, $sqlImg);
-					$rowImg = mysqli_fetch_assoc($resultImg);
+				$imgid = $row['ResidenceID'];
+				$sqlImg = "SELECT * FROM residenceimg WHERE ResidenceID = '$imgid' ";
+				$resultImg = mysqli_query($conn, $sqlImg);
+				$rowImg = mysqli_fetch_assoc($resultImg);
 
-					$residenceName = $row['ResidenceName'];
-					$street = $row['StreetNumber'];
-					$streetName = $row['StreetName'];
-					$brgy = $row['Barangay'];
-					$zip = $row['ZIPCode'];
-					$city = $row['City'];
-					$type = $row['ResidenceType'];
-					$guestnum = $row['GuestNumber'];
+				$residenceName = $row['ResidenceName'];
+				$street = $row['StreetNumber'];
+				$streetName = $row['StreetName'];
+				$brgy = $row['Barangay'];
+				$zip = $row['ZIPCode'];
+				$city = $row['City'];
+				$type = $row['ResidenceType'];
+				$guestnum = $row['GuestNumber'];
+				//echo '<script type="text/javascript"> cancelSuccess() </script>';
 
-					if (isset($_GET['error'])) {
+				if (isset($_GET['cancel'])) {
+					if ($_GET['cancel'] == "success") {
+						echo '<script type="text/javascript"> cancelSuccess() </script>';
+					}
+				}
+
+				if (isset($_GET['error'])) {
 					if ($_GET['error'] == "emptyfields") {
 						echo '<div class="container"><div class="container-fluid text-danger p-auto bg-white"><p>*Fill in all fields!</p></div></div>';
 					} elseif ($_GET['error'] == "datetaken") {
@@ -40,12 +46,12 @@ include "occupant_index.php";
 					} elseif ($_GET['error'] == "sqlerror2") {
 						echo '<div class="container"><div class="container-fluid text-danger p-auto bg-white"><p>*sqlerror2!</p></div></div>';
 					}
-					}
+				}
 
 
-					//WIP#############################
+				//WIP#############################
 
-					echo"
+				echo "
 					<h3>" . $row['ResidenceName'] . "</h3>
 					<p>Location: " . $row['StreetNumber'] . " " . $row['StreetName'] . ", " . $row['Barangay'] . ", " . $row['ZIPCode'] . ", " . $row['City'] . "</p>
 					<p>Type: " . $row['ResidenceType'] . "</p>
@@ -55,8 +61,8 @@ include "occupant_index.php";
 					<div class='row'>
 					";
 
-					for ($imgdef = 1; $imgdef <= $rowImg['ImageNumber']; $imgdef++) {
-						echo "
+				for ($imgdef = 1; $imgdef <= $rowImg['ImageNumber']; $imgdef++) {
+					echo "
 								<div class='container-fluid col-lg-6 col-md-12'>
 
 									<div class='p-2 mx-auto' style='width: 70%;'>
@@ -64,20 +70,20 @@ include "occupant_index.php";
 									</div>
 								</div>
 						";
-					}
-					echo"</div>";
+				}
+				echo "</div>";
 
-					//WIP############################
-					?>
+				//WIP############################
+				?>
 			</div>
 
 			<!-- ################## CALENDAR FORM ############################-->
 			<div class="container-fluid float-right p-2 mb-2 bg-info col-lg-5 col-md-auto">
-				<div  class="container-fluid p-2 mb-2 bg-white">
-				<?php
-				include "calendar.php";
-				?>
-			  </div>
+				<div class="container-fluid p-2 mb-2 bg-white">
+					<?php
+					include "calendar.php";
+					?>
+				</div>
 			</div>
 
 
@@ -114,13 +120,50 @@ include "occupant_index.php";
 						<button class="btn btn-primary" type="submit" name="reserve-submit">Continue</button>
 					</form>
 				</div>
+				<div class="container-fluid p-1 bg-white">
+					<button id="cancelBtn" class="btn btn-primary" type="submit" name="reserve-cancel">Cancel</button>
+				</div>
 			</div>
 			<!--######################RESERVE FORM END#####################-->
 
+			<div id="cancelModal" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<form action="includes/cancel_reservation.inc.php" method="post">
+						<span class="close">&times;</span>
+						<div class="form-group">
+							<h3>Cancel Reservation</h3><br>
+							<label>Transaction Number</label><br>
+							<input type="text" name="transacNo"><br>
+							<input type="hidden" name="rid" value=<?php echo $_GET['rid'] ?>>
+							<input type="hidden" name="uid" value="<?php echo $_SESSION['userId']; ?>">
+						</div>
+						<button class="btn btn-primary" type="submit" name="reserve-cancel">Confirm</button>
+					</form>
+				</div>
+
+			</div>
 
 
-	</div>
+		</div>
 </main>
+
+<script>
+	var modal = document.getElementById("cancelModal");
+	var btn = document.getElementById("cancelBtn");
+	var span = document.getElementsByClassName("close")[0];
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>
 
 <?php
 require "footer.php";

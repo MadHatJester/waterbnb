@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['reserve-submit'])) {
+if (isset($_POST['reserve-submit'])) {
 
     require 'dbh.inc.php';
     $strtDate = $_POST['toDate'];
@@ -9,17 +9,15 @@ if(isset($_POST['reserve-submit'])) {
     $uid = $_POST['uid'];
 
     if (empty($strtDate) || empty($endDate) || empty($noGuest)) {
-        header("Location: ../reserve_home.php?rid=".$rid."&error=emptyfields&startdate=".$strtDate."&enddate=".$endDate."&noGuests=".$noGuest);
+        header("Location: ../reserve_home.php?rid=" . $rid . "&error=emptyfields&startdate=" . $strtDate . "&enddate=" . $endDate . "&noGuests=" . $noGuest);
         exit();
-    }
-    else {
+    } else {
         $sql = "SELECT ReservationID FROM reservation WHERE ReservationID=?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../reserve_home.php?rid=".$rid."&error=sqlerror1");
+            header("Location: ../reserve_home.php?rid=" . $rid . "&error=sqlerror1");
             exit();
-        }
-        else {
+        } else {
             mysqli_stmt_bind_param($stmt, "s", $strtDate);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
@@ -27,31 +25,31 @@ if(isset($_POST['reserve-submit'])) {
             if ($resultCheck > 0) {
                 header("Location: ../reserve_home.php?error=datetaken");
                 exit();
-            }
-            else {
+            } else {
                 $sql = "INSERT INTO Reservation (StartDate, EndDate, GuestNumber, UserID, ResidenceID) VALUES (?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sql)) {
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
                     header("Location: ../reserve_home.php?error=sqlerror2");
                     exit();
-                }
-                else {
+                } else {
                     mysqli_stmt_bind_param($stmt, "ssiii", $strtDate, $endDate, $noGuest, $uid, $rid);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../payment.php?hosting=success");
+
+                    $sql = "SELECT RentalFee FROM residence WHERE ResidenceID = $rid";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $rentFee = $row['RentalFee'];
+
+                    header("Location: ../payment.php?hosting=success&fee=" . $rentFee);
                     exit();
                 }
             }
-
         }
-
     }
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
-
-}
-else {
+} else {
     header("Location: ../reserve_home.php");
     exit();
 }

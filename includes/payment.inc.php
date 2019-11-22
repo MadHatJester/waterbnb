@@ -9,6 +9,7 @@ if (isset($_POST['payment-submit'])) {
     $yyCard = $_POST['yearCard'];
     $dateCard = $mmCard . "-" . $yyCard;
     $codeCard = $_POST['codeCard'];
+    $rentalFee = $_POST['fee'];
 
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSUVWXYZ';
     $transacNo = substr(str_shuffle($permitted_chars), 0, 7);
@@ -44,7 +45,15 @@ if (isset($_POST['payment-submit'])) {
                 } else {
                     mysqli_stmt_bind_param($stmt, "sssisii", $transacNo, $firstName, $lastName, $noCard, $dateCard, $codeCard, $rid);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../success.php?hosting=success&transacno=" . $transacNo . "&date=" . $dateCard . "&rid=" .$rid);
+
+                    $sql = "SELECT *, DATEDIFF(EndDate, StartDate) AS TotalDays FROM reservation WHERE ReservationID = $rid";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $totalDays = $row['TotalDays'];
+                    $totalDays = $totalDays + 1;
+                    $totalFee = $totalDays * $rentalFee;
+                    
+                    header("Location: ../success.php?hosting=success&transacno=" . $transacNo . "&date=" . $dateCard . "&rid=" .$rid . "&total=" . $totalFee);
                     exit();
                 }
             }

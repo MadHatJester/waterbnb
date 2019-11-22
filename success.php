@@ -12,6 +12,7 @@ include "header.php";
 <div class="jumbotron p-4 m-4">
 <h1>Reservation Successful!</h2>
 <p>Your transaction no.: <?php echo $_GET['transacno'] ?></p>
+<P>Total amount paid: <?php echo $_GET['total'] ?></p>
 
 <form action="occupant_homepage.php">
     <button class="btn btn-success" type="submit">Home</button>

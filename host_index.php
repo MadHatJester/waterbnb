@@ -35,7 +35,7 @@ include "header.php";
     ?>
 </main>
 
-<script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript" src="js/welcomeModal.js"></script>
 
 <?php
 require "footer.php";
