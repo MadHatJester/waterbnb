@@ -45,6 +45,8 @@ include "occupant_index.php";
 						echo '<div class="container"><div class="container-fluid text-danger p-auto bg-white"><p>*sqlerror1!</p></div></div>';
 					} elseif ($_GET['error'] == "sqlerror2") {
 						echo '<div class="container"><div class="container-fluid text-danger p-auto bg-white"><p>*sqlerror2!</p></div></div>';
+					} elseif ($_GET['error'] == "noreserve") {
+						echo '<div class="container"><div class="container-fluid text-danger p-auto bg-white"><p>*No Reservation!</p></div></div>';
 					}
 				}
 
