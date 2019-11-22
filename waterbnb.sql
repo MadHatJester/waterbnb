@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2019 at 05:13 PM
+-- Generation Time: Nov 22, 2019 at 06:45 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -42,12 +42,7 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`ReservationID`, `StartDate`, `EndDate`, `GuestNumber`, `UserID`, `ResidenceID`) VALUES
-(1, '2019-10-15', '2019-10-16', 4, 3, 3),
-(2, '2019-10-15', '2019-10-16', 3, 3, 1),
-(3, '2019-10-08', '2019-10-09', 4, 3, 1),
-(4, '2019-10-16', '2019-10-17', 5, 3, 1),
-(5, '2019-10-16', '2019-10-17', 4, 3, 2),
-(6, '2019-10-22', '2019-10-23', 3, 3, 1);
+(47, '2019-11-22', '2019-11-23', 4, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -79,7 +74,8 @@ INSERT INTO `residence` (`ResidenceID`, `ResidenceName`, `ResidenceType`, `Guest
 (3, 'Fire House', 'bungalow', 6, 6969, 'Inferno', 'Corner', 1111, 'Hilden', 996, 2),
 (4, 'Air Tent', 'cottage', 3, 456, 'Noctus', 'Bicutan', 7686, 'Pasay', 800, 1),
 (7, 'Earth Cabin', 'bungalow', 7, 133, 'Hearth', 'Muntinlupa', 5812, 'Batangas', 678, 2),
-(24, 'Metal House', 'cottage', 6, 6969, 'AC/DC', 'Sandman', 1111, 'Rock', 678, 2);
+(24, 'Metal House', 'cottage', 6, 6969, 'AC/DC', 'Sandman', 1111, 'Rock', 678, 2),
+(26, 'Normal House', 'cabin', 5, 201, 'Normal', 'Static', 4567, 'Bland', 555, 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +99,8 @@ INSERT INTO `residenceimg` (`ImageID`, `ResidenceID`, `ImageNumber`) VALUES
 (3, 4, 4),
 (4, 3, 3),
 (5, 7, 3),
-(27, 24, 2);
+(27, 24, 2),
+(29, 26, 4);
 
 -- --------------------------------------------------------
 
@@ -127,10 +124,29 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`TransactionID`, `TransactionNumber`, `FirstName`, `LastName`, `CardNumber`, `CardDate`, `CardCode`, `ReservationID`) VALUES
-(1, '0', 'Host', 'Teban', 2147483647, '12-99', 321, 1),
-(2, '3GUzwJy', 'Jibba', 'Libba', 2147483647, '12-12', 567, 1),
-(3, 'AfR0Yj7', 'Jibba', 'Libba', 2147483647, '12-12', 567, 5),
-(4, 'zSlCbsU', 'Jibba', 'Libba', 2147483647, '12-12', 567, 6);
+(52, 'cCuzieX', 'Sir Lance', 'A Lot', 2147483647, '23-99', 321, 47);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userimg`
+--
+
+CREATE TABLE `userimg` (
+  `ImageID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userimg`
+--
+
+INSERT INTO `userimg` (`ImageID`, `UserID`) VALUES
+(20, 1),
+(18, 3),
+(19, 3),
+(21, 4),
+(22, 4);
 
 -- --------------------------------------------------------
 
@@ -155,7 +171,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`UserID`, `Username`, `Email`, `FirstName`, `LastName`, `UserType`, `Password`) VALUES
 (1, 'host1', 'host@mail.com', 'Jibba', 'Libba', 'host', '$2y$10$HziqU6rDexthNtk3fMZkLe67doEFhSN.CEK4UooVQJdJQtAR7YnQu'),
 (2, 'host2', 'nothost@email.com', 'Esteban', 'Beban', 'host', '$2y$10$V5p2C8uUB/3KhJpNcEGvgOeUriHe.uUk37Bmrb0iy9QqXnbPGMrBG'),
-(3, 'occupant1', 'occupant@mail.com', 'Chop', 'Chop', 'occupant', '$2y$10$JeHFwly42mneD0MW.cEG6Oet2E45UTMtWSUywxukDduGapfr03LvG');
+(3, 'occupant1', 'occupant@mail.com', 'Chop', 'Chop', 'occupant', '$2y$10$JeHFwly42mneD0MW.cEG6Oet2E45UTMtWSUywxukDduGapfr03LvG'),
+(4, 'occupant2', 'occupantme@mail.com', 'Sir Lance', 'A Lot', 'occupant', '$2y$10$mhayBzlVViP8lBQO14zZO.dPf7J5hHdXTJpFsrWU0sScGlX8.xRR6');
 
 --
 -- Indexes for dumped tables
@@ -191,6 +208,13 @@ ALTER TABLE `transactions`
   ADD KEY `ReservationID` (`ReservationID`);
 
 --
+-- Indexes for table `userimg`
+--
+ALTER TABLE `userimg`
+  ADD PRIMARY KEY (`ImageID`),
+  ADD KEY `UserID` (`UserID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -204,31 +228,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `residence`
 --
 ALTER TABLE `residence`
-  MODIFY `ResidenceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ResidenceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `residenceimg`
 --
 ALTER TABLE `residenceimg`
-  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `userimg`
+--
+ALTER TABLE `userimg`
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -258,6 +288,12 @@ ALTER TABLE `residenceimg`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`ReservationID`) REFERENCES `reservation` (`ReservationID`);
+
+--
+-- Constraints for table `userimg`
+--
+ALTER TABLE `userimg`
+  ADD CONSTRAINT `userimg_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
