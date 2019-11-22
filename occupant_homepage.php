@@ -1,11 +1,12 @@
 <?php
 include "occupant_index.php";
 echo '<h1>Listed Spaces</h1>';
-	
+
 $sql = "SELECT * FROM Residence";
 $result = mysqli_query($conn, $sql);
 $queryResults = mysqli_num_rows($result);
 
+echo '<div class="container-fluid">';
 if ($queryResults > 0) {
 	while ($row = mysqli_fetch_assoc($result)) {
 		$imgid = $row['ResidenceID'];
@@ -20,10 +21,10 @@ if ($queryResults > 0) {
 				<p>No. of Guest: " . $row['GuestNumber'] . "</p>
 				<p>Pictures:</p>
 			";
-			
-			echo"
+
+			echo "
 			<div class='row'>	
-			";	
+			";
 			for ($imgdef = 1; $imgdef <= $rowImg['ImageNumber']; $imgdef++) {
 				echo " 	
 						<div class='container col-lg-4 col-md-6'>
@@ -34,9 +35,10 @@ if ($queryResults > 0) {
 						</div>
 				";
 			}
-			echo"</div>";
+			echo "</div>";
 
 			echo "</div>";
 		}
 	}
 }
+echo "</div>";

@@ -34,7 +34,7 @@ $resID =  $_GET['rid'];
 ?>
 
 <form method="post" action=" <?php echo $_SERVER['PHP_SELF'] . '?rid='.$resID; ?> "> <!--action parameter -->
-	<fieldset><h2>Reserved Schedules</h2>
+	<fieldset><h2>Booking Schedule</h2>
 		<ol class="date_select">
 			<li>
 				<select id="month" name="month_select" >
@@ -135,14 +135,15 @@ function draw_calendar($month,$year,$events = array()){
 		      //if(isset($events[$event_day])) {
 
 		    foreach($events as $event) {
-					//echo '|| event_day='.$event_day;
-					//echo ' start_day='.$event['StartDate'];
-					if(($event['StartDate'] == $event_day || $event['EndDate'] == $event_day) || ($event['StartDate'] < $event_day && $event['EndDate'] > $event_day)){
-						$calendar.= '<div class="event"><p>Reserved</p></div>';
-					//	echo ' event_day='.$event_day;
-				}
-
-		        }
+				//echo '|| event_day='.$event_day;
+				//echo ' start_day='.$event['StartDate'];
+				if(($event['StartDate'] == $event_day || $event['EndDate'] == $event_day) || ($event['StartDate'] < $event_day && $event['EndDate'] > $event_day)){
+					$calendar.= '<div class="event" ><p>Reserved</p></div>';
+				//	echo ' event_day='.$event_day;
+				} //else {
+					//$calendar.= '<div class="eventavail"><p>Available</p></div>';
+		        //}
+			}
 		      //}
 		      //else {
 

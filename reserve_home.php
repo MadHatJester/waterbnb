@@ -1,6 +1,7 @@
 <?php
 include "occupant_index.php";
 ?>
+
 <main>
 
 	<div class='p-3 m-2'>
@@ -28,7 +29,6 @@ include "occupant_index.php";
 				$city = $row['City'];
 				$type = $row['ResidenceType'];
 				$guestnum = $row['GuestNumber'];
-				//echo '<script type="text/javascript"> cancelSuccess() </script>';
 
 				if (isset($_GET['cancel'])) {
 					if ($_GET['cancel'] == "success") {
@@ -58,6 +58,7 @@ include "occupant_index.php";
 					<p>Location: " . $row['StreetNumber'] . " " . $row['StreetName'] . ", " . $row['Barangay'] . ", " . $row['ZIPCode'] . ", " . $row['City'] . "</p>
 					<p>Type: " . $row['ResidenceType'] . "</p>
 					<p>No. of Guest: " . $row['GuestNumber'] . "</p>
+					<p>Rental Fee: " . $row['RentalFee'] . "</p>
 					<p>Pictures: </p>
 
 					<div class='row'>
@@ -77,20 +78,12 @@ include "occupant_index.php";
 
 				//WIP############################
 				?>
-			</div>
 
-			<!-- ################## CALENDAR FORM ############################-->
-			<div class="container-fluid float-right p-2 mb-2 bg-info col-lg-5 col-md-auto">
-				<div class="container-fluid p-2 mb-2 bg-white">
-					<?php
-					include "calendar.php";
-					?>
-				</div>
-			</div>
 
+			</div>
 
 			<!-- ################## RESERVE FORM ############################-->
-			<div class="container-fluid float-right p-2 bg-info ">
+			<div class="container float-right p-2 bg-info col-lg-5">
 				<h2>Reserve a Home</h2>
 				<div class="container-fluid p-1 bg-white">
 					<form action="includes/reserve_home.inc.php" method="post">
@@ -125,6 +118,18 @@ include "occupant_index.php";
 				<div class="container-fluid p-1 bg-white">
 					<button id="cancelBtn" class="btn btn-primary" type="submit" name="reserve-cancel">Cancel</button>
 				</div>
+
+				<br><br><br><br>
+
+				<!-- ################## CALENDAR FORM ############################-->
+				<div class="container-fluid float-right p-2 mb-2 bg-info">
+					<div class="container-fluid p-2 mb-2 bg-white">
+						<?php
+						include "calendar.php";
+						?>
+					</div>
+				</div>
+
 			</div>
 			<!--######################RESERVE FORM END#####################-->
 
@@ -145,7 +150,6 @@ include "occupant_index.php";
 				</div>
 
 			</div>
-
 
 		</div>
 </main>

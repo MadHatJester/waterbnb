@@ -18,7 +18,7 @@ if (isset($_POST['host-submit'])) {
     $imgdef = 0;
     // Define maxsize for files i.e 2MB 
     $maxsize = 2 * 1024 * 1024;
-    
+
     if (!empty(array_filter($_FILES['files']['name']))) {
         if (empty($titleHome) || empty($typeHome) || empty($guestHome) || empty($feeHome) || empty($noHomes) || empty($streeHomes) || empty($bgyHomes) || empty($zipHomes) || empty($cityHomes)) {
             header("Location: ../host_home.php?error=emptyfields&homeTitle=" . $titleHome . "&homeType=" . $typeHome . "&noGuests=" . $guestHome . "&rentalFee=" . $feeHome . "&streetNo=" . $noHomes . "&streeName=" . $streeHomes . "&barangay=" . $bgyHomes . "&zip=" . $zipHomes . "&city=" . $cityHomes);
@@ -57,7 +57,7 @@ if (isset($_POST['host-submit'])) {
                         mysqli_query($conn, $sql);
 
                         foreach ($_FILES['files']['tmp_name'] as $key => $value) {
-          
+
                             $imgdef++;
                             $fileTmpName = $_FILES['files']['tmp_name'][$key];
                             $fileName = $_FILES['files']['name'][$key];
@@ -104,9 +104,7 @@ if (isset($_POST['host-submit'])) {
                                 echo "Error uploading {$fileName} ";
                                 echo "({$fileExt} file type is not allowed)<br / >";
                             }
-
                         }
-
                     }
 
                     echo "$imgdef";
@@ -115,7 +113,6 @@ if (isset($_POST['host-submit'])) {
                 }
             }
         }
-
     } else {
 
         // If no files selected 
